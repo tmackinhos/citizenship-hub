@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USA Citizenship Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">🇺🇸 USA Citizenship Hub</div>
+        <nav>
+            <button onclick="showPage('login')">Login</button>
+            <button onclick="showPage('dashboard')">Student Dashboard</button>
+            <button onclick="showPage('admin')">Admin</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="login" class="page active">
+            <div class="card usa-border">
+                <h2>Welcome / Bienvenido</h2>
+                <p>Start your journey to becoming a US Citizen today.</p>
+                <input type="text" id="username" placeholder="Email Address">
+                <input type="password" id="password" placeholder="Password">
+                <button class="btn-primary" onclick="login()">Log In</button>
+            </div>
+        </section>
+
+        <section id="dashboard" class="page hidden">
+            <h2>Your Naturalization Journey</h2>
+            <div class="progress-container">
+                <p>Overall Progress: <span id="progress-text">20%</span></p>
+                <div class="progress-bar"><div class="progress-fill" style="width: 20%;"></div></div>
+            </div>
+            <div class="grid">
+                <div class="card" onclick="showPage('flashcards')">
+                    <h3>📚 100 Civics Flashcards</h3>
+                    <p>Practice the official USCIS questions.</p>
+                </div>
+                <div class="card" onclick="showPage('interview')">
+                    <h3>🤖 AI Interview Practice</h3>
+                    <p>Simulate the speaking test with our AI officer.</p>
+                </div>
+                <div class="card">
+                    <h3>📝 English Lessons</h3>
+                    <p>Read, write, and speak basics.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="flashcards" class="page hidden">
+            <h2>Civics Practice Test</h2>
+            <button class="btn-secondary" onclick="showPage('dashboard')">🔙 Back</button>
+            <div class="card flashcard" id="flashcard-container" onclick="flipCard()">
+                <div class="flashcard-inner" id="flashcard-inner">
+                    <div class="flashcard-front" id="card-question">
+                        Loading...
+                    </div>
+                    <div class="flashcard-back" id="card-answer">
+                        Loading...
+                    </div>
+                </div>
+            </div>
+            <div class="controls">
+                <button class="btn-primary" onclick="nextCard()">Next Question ➡️</button>
+            </div>
+        </section>
+
+        <section id="interview" class="page hidden">
+            <h2>AI Officer Interview Practice</h2>
+            <button class="btn-secondary" onclick="showPage('dashboard')">🔙 Back</button>
+            <div class="chat-box" id="chat-box">
+                <div class="message ai"><strong>Officer:</strong> Good morning. Please raise your right hand. Do you swear to tell the truth, the whole truth, and nothing but the truth?</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-msg" placeholder="Type your response...">
+                <button class="btn-primary" onclick="sendMessage()">Send</button>
+            </div>
+        </section>
+
+        <section id="admin" class="page hidden">
+            <h2>Admin Dashboard</h2>
+            <div class="grid">
+                <div class="card usa-border">
+                    <h3>Total Students Helped</h3>
+                    <h1 class="stat">1,204</h1>
+                </div>
+                <div class="card usa-border">
+                    <h3>Passed Citizenship Test</h3>
+                    <h1 class="stat">856</h1>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
