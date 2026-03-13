@@ -1,0 +1,19 @@
+[package]
+name = "tmackinhos/citizenship-hub"
+version = "0.1.0"
+description = "US Citizenship Preparation Portal"
+
+[dependencies]
+"wasmer/static-web-server" = "^1"
+
+[fs]
+public = "public"
+
+[[command]]
+name = "run"
+module = "wasmer/static-web-server:webserver"
+runner = "https://webc.org/runner/wasi"
+
+[command.annotations.wasi]
+env = ["SERVER_PORT=8080"]
+main-args = ["-d", "/public"]
